@@ -632,9 +632,12 @@ namespace WdRiscv
 /* INSERT YOUR CODE FROM HERE */
      // Expland
      cube,
-
+     rotleft,
+     rotright,
+     reverse,
+     notand,
 /* INSERT YOUR CODE END HERE */ 
 
-     maxId = cube
+     maxId = notand
     };
 }

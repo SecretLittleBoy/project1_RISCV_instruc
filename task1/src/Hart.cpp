@@ -1017,6 +1017,9 @@ void
 Hart<URV>::execRotleft(const DecodedInst* di)
 {
   /* INSERT YOUR CODE  HERE */ 
+  URV v = intRegs_.read(di->op1()) << intRegs_.read(di->op2()) | 
+    intRegs_.read(di->op1()) >> (32 - intRegs_.read(di->op2()));
+  intRegs_.write(di->op0(), v);
 }
 
 template <typename URV>
@@ -1025,6 +1028,9 @@ void
 Hart<URV>::execRotright(const DecodedInst* di)
 {
   /* INSERT YOUR CODE  HERE */ 
+  URV v = intRegs_.read(di->op1()) >> intRegs_.read(di->op2()) | 
+    intRegs_.read(di->op1()) << (32 - intRegs_.read(di->op2()));
+  intRegs_.write(di->op0(), v);
 }
 
 template <typename URV>
@@ -1032,7 +1038,9 @@ inline
 void
 Hart<URV>::execReverse(const DecodedInst* di)
 {
-  /* INSERT YOUR CODE  HERE */ 
+  /* INSERT YOUR CODE  HERE */
+  URV v = (intRegs_.read(di->op1()) >> (24 - intRegs_.read(di->op2())*8))&0xff;
+  intRegs_.write(di->op0(), v);
 }
 
 template <typename URV>
@@ -1041,6 +1049,8 @@ void
 Hart<URV>::execNotand(const DecodedInst* di)
 {
   /* INSERT YOUR CODE  HERE */  
+  URV v = ~(intRegs_.read(di->op1()) & intRegs_.read(di->op2()));
+  intRegs_.write(di->op0(), v);
 }
 
 /* INSERT YOUR CODE END HERE */  
@@ -6007,6 +6017,10 @@ Hart<URV>::execute(const DecodedInst* di)
 /* INSERT YOUR CODE FROM HERE */ 
      //Expland
      &&cube,
+     &&rotleft,
+     &&rotright,
+     &&reverse,
+     &&notand,
 /* INSERT YOUR CODE END HERE */ 
 
     };
@@ -6172,6 +6186,22 @@ Hart<URV>::execute(const DecodedInst* di)
 
  cube:
   execCube(di);
+  return;
+
+  rotleft:
+  execRotleft(di);
+  return;
+
+  rotright:
+  execRotright(di);
+  return;
+
+  reverse:
+  execReverse(di);
+  return;
+
+  notand:
+  execNotand(di);
   return;
 
 /* INSERT YOUR CODE END HERE */  

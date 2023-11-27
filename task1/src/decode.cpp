@@ -1837,6 +1837,10 @@ Hart<URV>::decode(uint32_t inst, uint32_t& op0, uint32_t& op1, uint32_t& op2,
     {
       // cube
       if (funct3 == 0) return instTable_.getEntry(InstId::cube);
+      if (funct3 == 1) return instTable_.getEntry(InstId::rotleft);
+      if (funct3 == 2) return instTable_.getEntry(InstId::rotright);
+      if (funct3 == 3) return instTable_.getEntry(InstId::reverse);
+      if (funct3 == 4) return instTable_.getEntry(InstId::notand);
     }
 /* INSERT YOUR CODE END HERE */
 	else if (funct7 == 4)

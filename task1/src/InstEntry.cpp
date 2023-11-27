@@ -3894,6 +3894,27 @@ InstTable::setupInstVec()
 	OperandType::IntReg, OperandMode::Read, rs1Mask,
 	OperandType::IntReg, OperandMode::Read, rs2Mask },
 
+      { "rotleft", InstId::rotleft, 0x4001033, top7Funct3Low7Mask,
+      InstType::Int,
+      OperandType::IntReg, OperandMode::Write, rdMask,
+      OperandType::IntReg, OperandMode::Read, rs1Mask,
+      OperandType::IntReg, OperandMode::Read, rs2Mask },
+
+      { "rotright", InstId::rotright, 0x4002033, top7Funct3Low7Mask,
+      InstType::Int,
+      OperandType::IntReg, OperandMode::Write, rdMask,
+      OperandType::IntReg, OperandMode::Read, rs1Mask,
+      OperandType::IntReg, OperandMode::Read, rs2Mask },
+
+      { "reverse", InstId::reverse, 0x4003033, top7Funct3Low7Mask,
+      InstType::Int,
+      OperandType::IntReg, OperandMode::Write, rdMask,
+      OperandType::IntReg, OperandMode::Read, rs1Mask },
+
+      { "notand", InstId::notand, 0x4004033, top7Funct3Low7Mask,
+      InstType::Int,
+      OperandType::IntReg, OperandMode::Write, rdMask,
+      OperandType::IntReg, OperandMode::Read, rs1Mask,}
 /* INSERT YOUR CODE END HERE */ 
     };
 }
