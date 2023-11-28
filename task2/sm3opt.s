@@ -753,8 +753,11 @@ sm3_str_summ:
 	j	.L35
 .L36:
 	lw	a5,-24(s0)
-	slli	a5,a5,1
-	addi	a5,a5,1
+	
+	#slli	a5,a5,1
+	#addi	a5,a5,1
+	.insn r 0x33,5,2,a5,a4,a5
+
 	addi	a4,s0,-540
 	slli	a5,a5,2
 	add	a5,a4,a5
@@ -916,10 +919,13 @@ sm3_str_summ:
 	j	.L37
 .L38:
 	lw	a5,-24(s0)
-	slli	a5,a5,1
-	addi	a5,a5,1
+	#slli	a5,a5,1
+	#addi	a5,a5,1
+	.insn r 0x33,5,2,a5,a5,a5
+
 	addi	a4,s0,-540
 	slli	a5,a5,2
+	
 	add	a5,a4,a5
 	mv	a0,a5
 	call	sm3_str_to_long

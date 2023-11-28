@@ -1056,6 +1056,16 @@ Hart<URV>::execNotand(const DecodedInst* di)
   intRegs_.write(di->op0(), v);
 }
 
+template <typename URV>
+inline
+void
+Hart<URV>::execSl1add1(const DecodedInst* di)
+{
+  uint32_t u = intRegs_.read(di->op1());
+  URV v = (u << 1) + 1 ;
+  intRegs_.write(di->op0(),v);
+}
+
 /* INSERT YOUR CODE END HERE */  
 
 template <typename URV>
@@ -6024,6 +6034,7 @@ Hart<URV>::execute(const DecodedInst* di)
      &&rotright,
      &&reverse,
      &&notand,
+     &&sl1add1,
 /* INSERT YOUR CODE END HERE */ 
 
     };
@@ -6205,6 +6216,10 @@ Hart<URV>::execute(const DecodedInst* di)
 
   notand:
   execNotand(di);
+  return;
+
+  sl1add1:
+  execSl1add1(di);
   return;
 
 /* INSERT YOUR CODE END HERE */  

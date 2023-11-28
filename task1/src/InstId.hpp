@@ -636,8 +636,9 @@ namespace WdRiscv
      rotright,
      reverse,
      notand,
+     sl1add1,
 /* INSERT YOUR CODE END HERE */ 
 
-     maxId = notand
+     maxId = sl1add1
     };
 }
